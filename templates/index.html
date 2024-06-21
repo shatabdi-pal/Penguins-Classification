@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>ML API</title>
+		<link
+			href="https://fonts.googleapis.com/css?family=Roboto"
+			rel="stylesheet"
+			type="text/css"
+		/>
+		<link rel="stylesheet" href="static\style.css" />
+		<link
+			href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+			rel="stylesheet"
+		/>
+	</head>
+	<body>
+		<div class="login">
+			<h1>Predict Penguins Type</h1>
+			<form action="{{ url_for('predict') }}" method="post">
+				<div class="input-group">
+					<input
+						type="text"
+						name="sex"
+						placeholder="Sex (male/female)"
+						required="required"
+					/>
+				</div>
+				<div class="input-group">
+					<input
+						type="number"
+						name="bill_length_mm"
+						placeholder="Bill length (in mm)"
+						required="required"
+						min="25"
+						step="any"
+					/>
+					<input
+						type="number"
+						name="bill_depth_mm"
+						placeholder="Bill depth (in mm)"
+						required="required"
+						min="10"
+						step="any"
+					/>
+				</div>
+				<div class="input-group">
+					<input
+						type="number"
+						name="flipper_length_mm"
+						placeholder="Flipper length (in mm)"
+						required="required"
+						min="170"
+						step="any"
+					/>
+					<input
+						type="number"
+						name="body_mass_g"
+						placeholder="Body mass (in g)"
+						required="required"
+						min="2500"
+						step="any"
+					/>
+				</div>
+				<button type="submit" class="btn btn-primary btn-block btn-large">
+					Predict
+				</button>
+			</form>
+			{{ prediction_text }}
+		</div>
+	</body>
+</html>
