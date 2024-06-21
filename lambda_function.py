@@ -1,5 +1,5 @@
 import subprocess
-
+#This run the subprocess app.py
 def lambda_handler(event, context):
     try:
         # Run the app.py script
