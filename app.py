@@ -2,17 +2,17 @@ import numpy as np
 from flask import Flask, render_template, request
 import pickle
 
-application = Flask(__name__)
+app = Flask(__name__)
 model = pickle.load(open('rf_model.pkl', 'rb'))
 
 # Mapping for categorical features
 sex_mapping = {'male': 0, 'female': 1}
 
-@application.route('/')
+@app.route('/')
 def home():
     return render_template('index.html')
 
-@application.route('/predict', methods=['POST'])
+@app.route('/predict', methods=['POST'])
 def predict():
     features = request.form
     sex = sex_mapping.get(features['sex'])
@@ -30,4 +30,4 @@ def predict():
     return render_template('index.html', prediction_text=f'Penguin species is {output}')
 
 if __name__ == "__main__":
-    application.run(debug=True)
+    app.run(debug=True)
